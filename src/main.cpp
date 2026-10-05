@@ -1,8 +1,12 @@
 #include <SFML/Graphics.hpp>
+#include "map.hpp"
+#define MAP_LENGTH 400
+#define NUMBER_CELLS_SQUARE_ROOT 10  
 
 int main()
 {
-	sf::RenderWindow window( sf::VideoMode( { 200, 200 } ), "SFML works!" );
+	map map {NUMBER_CELLS_SQUARE_ROOT,NUMBER_CELLS_SQUARE_ROOT};
+	sf::RenderWindow window( sf::VideoMode( {400, 400 }), "Basic WAr" );
 	sf::CircleShape shape( 100.f );
 	shape.setFillColor( sf::Color::Green );
 
@@ -15,7 +19,7 @@ int main()
 		}
 
 		window.clear();
-		window.draw( shape );
+		map.show(window,MAP_LENGTH/NUMBER_CELLS_SQUARE_ROOT);
 		window.display();
 	}
 }
